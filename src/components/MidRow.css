@@ -1,0 +1,39 @@
+/* MidRow.css */
+.mid-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+  }
+  
+  .info-display {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 40px;
+  }
+  
+  .motor-speed-slider {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .info-item {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  p {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #555;
+    font-weight: bold;
+  }
+  

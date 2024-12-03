@@ -1,0 +1,15 @@
+/* Indicators.css */
+.indicators {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+  
+  .indicator {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+  }
