@@ -4,21 +4,41 @@
     justify-content: space-around;
     margin: 20px;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+   
+
+    background-color: #1a1a1a;
   }
   
   .info-item {
     text-align: center;
     font-family: Arial, sans-serif;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 120px;
+    
+
   }
   
-  
-  p {
-    margin-top: 10px;
+  #gear-ratio {
+    background-image: url('gear.png');
+  }
+  #battery-percentage {
+    background-image: url('battery-percentage.png');
+  }
+  #battery-temperature {
+    background-image: url('battery-temp.png');
+  }
+  #motor-rpm {
+    background-image: url('engine-status.png');
+  }
+
+  .info-value {
+    margin-top: 123px;
     font-size: 14px;
     color: #555;
     font-weight: bold;
   }
+
   
