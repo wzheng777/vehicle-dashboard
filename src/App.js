@@ -31,7 +31,7 @@ const App = () => {
     };
 
     fetchDashboardData();
-    const interval = setInterval(fetchDashboardData, 5000); // Poll every 5 seconds
+    const interval = setInterval(fetchDashboardData, 200); // Poll every 200 ms
     return () => clearInterval(interval);
   }, []);
 
@@ -48,6 +48,12 @@ const App = () => {
     try {
       await axios.post(BASE_URL + '/api/dashboard/charging', { charging: !dashboardData.isCharging });
       setDashboardData((prevState) => ({ ...prevState, isCharging: !prevState.isCharging }));
+    //  if ( dashboardData.isCharging) {
+    //   dashboardData.motorSpeed = 0;
+    //   this.setDashboardData(dashboardData);
+    //   console.log(dashboardData);
+    //  }
+     
     } catch (error) {
       console.error('Error updating charging state:', error);
     }
