@@ -5,7 +5,7 @@ import './MotorRPMGauge.css';
 
 const MotorRPMGauge = ({ rpmValue }) => {
   // Create a spring-based animation for the gauge needlek
-  console.log(rpmValue);
+
   
   const { rotation } = useSpring({
     from: { rotation:  0 },

@@ -5,12 +5,33 @@ import './PowerGauge.css';
 
 const PowerGauge = ({ powerValue }) => {
   // Create a spring-based animation for the gauge needle
+  //console.log(powerValue * 1.4 + 180);
+  
   const { rotation } = useSpring({
-    from: { rotation: 0 },
-    to: { rotation: powerValue * 1.8 - 90 }, // Assuming powerValue ranges from 0 to 100
+    from: { rotation:  0 },
+    to: { rotation: powerValue * 1.4 + 180 },
     config: { tension: 180, friction: 12 },
   });
 
+  const getPower= (angle) => {
+    console.log(angle);
+    switch (angle) {
+      case 180:
+        return 0;
+      case 215:
+        return 250;
+      case 250:
+        return 500;
+      case 285:
+        return 750;
+      case 320:
+        return 1000;
+      default: 
+        return 0;
+    }
+    
+  };
+  console.log(getPower(powerValue));
   return (
     <div className="power-gauge">
       <div className="gauge">
@@ -21,9 +42,14 @@ const PowerGauge = ({ powerValue }) => {
               transform: rotation.to((r) => `rotate(${r}deg)`),
             }}
           />
+           <div className="power-value">
+            <div>{getPower(powerValue * 1.4 + 180)}</div>
+            <div className='power-unit'> kW </div>
+          </div>
         </div>
+       
       </div>
-      <p>Power Consumption: {powerValue}%</p>
+      
     </div>
   );
 };
