@@ -9,14 +9,14 @@ const MotorRPMGauge = ({ rpmValue }) => {
   
   const { rotation } = useSpring({
     from: { rotation:  0 },
-    to: { rotation: rpmValue * 0.32 + 45 }, // Assuming rpmValue ranges from 0 to 800
+    to: { rotation: rpmValue * 0.36 + 36 }, // Assuming rpmValue ranges from 0 to 800
     config: { tension: 180, friction: 12 },
   });
 
   return (
     <div className="motor-rpm-gauge">
       <div className="gauge">
-        <div className="gauge-background">
+        <div className="gauge-background-rpm">
           <animated.div
             className="gauge-needle"
             style={{
@@ -24,7 +24,7 @@ const MotorRPMGauge = ({ rpmValue }) => {
             }}
           />
           <div className="rpm-value">
-          <p>{rpmValue}</p>
+          <div>{rpmValue}</div>
           <div className='rpm-unit'> RPM </div>
           </div>
           
