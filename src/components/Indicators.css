@@ -4,12 +4,31 @@
     flex-direction: row;
     gap: 10px;
   }
-  
+  #parking {
+    background-image: url('parking.png');
+
+  }
+  #check-engine {
+    background-image: url('engine.png');
+    
+  }
+  #battery-low {
+    background-image: url('batter_low.png');
+  }
+  #motor-status {
+    background-image: url('motor.png');
+  }
   .indicator {
     display: flex;
     align-items: center;
+    width: 120px;
+    height:120px;
     gap: 10px;
     font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: bold;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    
   }

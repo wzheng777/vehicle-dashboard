@@ -20,6 +20,9 @@ const App = () => {
     isCharging: false,
   });
 
+  const [enableSlider, setEnableSlider] = useState(true);
+  const [sliderSpeed, setSliderSpeed] = useState(0);
+
   useEffect(() => {
     const fetchDashboardData = async () => {
       try {
@@ -36,6 +39,7 @@ const App = () => {
   }, []);
 
   const handleSpeedChange = async (speed) => {
+    console.log(speed);
     try {
       await axios.post(BASE_URL + '/api/dashboard/motor-speed', { speed });
       setDashboardData((prevState) => ({ ...prevState, motorSpeed: speed }));
@@ -48,12 +52,18 @@ const App = () => {
     try {
       await axios.post(BASE_URL + '/api/dashboard/charging', { charging: !dashboardData.isCharging });
       setDashboardData((prevState) => ({ ...prevState, isCharging: !prevState.isCharging }));
-    //  if ( dashboardData.isCharging) {
-    //   dashboardData.motorSpeed = 0;
-    //   this.setDashboardData(dashboardData);
-    //   console.log(dashboardData);
-    //  }
-     
+
+     if ( dashboardData.isCharging) {
+        console.log("charging...");
+        setDashboardData((prevState) => ({ ...prevState, motorSpeed: 0 }));
+        setEnableSlider(false);
+        console.log(dashboardData);
+     }
+    else {
+      setDashboardData((prevState) => ({ ...prevState, powerConsumption: 0 }));
+      setEnableSlider(true);
+      
+    }
     } catch (error) {
       console.error('Error updating charging state:', error);
     }
@@ -69,7 +79,8 @@ const App = () => {
         batteryTemperature={dashboardData.batteryTemperature}
         motorRPM={dashboardData.motorRPM}
         gearRatio={dashboardData.gearRatio}
-        initialSpeed={dashboardData.motorSpeed}
+        initialSpeed={sliderSpeed}
+        enableSlider={enableSlider}
         onSpeedChange={handleSpeedChange}
       />
       <Footer

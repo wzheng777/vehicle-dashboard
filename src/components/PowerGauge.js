@@ -5,7 +5,6 @@ import './PowerGauge.css';
 
 const PowerGauge = ({ powerValue }) => {
   // Create a spring-based animation for the gauge needle
-  //console.log(powerValue * 1.4 + 180);
   
   const { rotation } = useSpring({
     from: { rotation:  0 },
@@ -14,7 +13,6 @@ const PowerGauge = ({ powerValue }) => {
   });
 
   const getPower= (angle) => {
-    console.log(angle);
     switch (angle) {
       case 180:
         return 0;
@@ -31,7 +29,6 @@ const PowerGauge = ({ powerValue }) => {
     }
     
   };
-  console.log(getPower(powerValue));
   return (
     <div className="power-gauge">
       <div className="gauge">

@@ -4,7 +4,7 @@ import InfoDisplay from './InfoDisplay';
 import MotorSpeedSlider from './MotorSpeedSlider';
 import './MidRow.css';
 
-const MidRow = ({ batteryPercentage, batteryTemperature, gearRatio, motorRPM, initialSpeed, onSpeedChange }) => {
+const MidRow = ({ batteryPercentage, batteryTemperature, gearRatio, motorRPM, initialSpeed, onSpeedChange , enableSlider}) => {
   return (
     <div className="mid-row">
       <InfoDisplay
@@ -13,7 +13,7 @@ const MidRow = ({ batteryPercentage, batteryTemperature, gearRatio, motorRPM, in
         gearRatio={gearRatio}
         motorRPM={motorRPM}
       />
-      <MotorSpeedSlider initialSpeed={initialSpeed} onSpeedChange={onSpeedChange} />
+      <MotorSpeedSlider initialSpeed={initialSpeed} onSpeedChange={onSpeedChange} enableSlider = {enableSlider}/>
     </div>
   );
 };
