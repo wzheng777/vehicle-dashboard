@@ -4,8 +4,6 @@ import MidRow from './components/MidRow';
 import Footer from './components/Footer';
 import Gauges from './components/Gauges';
 
-import SliderWithExternalControl from './components/SliderWithExternalControl';
-
 import axios from 'axios';
 import './App.css';
 
@@ -23,6 +21,7 @@ const App = () => {
     isCharging: false,
   });
 
+  const [enableSlider, setEnableSlider] = useState(true);
   const [sliderSpeed, setSliderSpeed] = useState(0);
 
   useEffect(() => {
@@ -58,11 +57,11 @@ const App = () => {
      if ( dashboardData.isCharging) {
         setDashboardData((prevState) => ({ ...prevState, motorSpeed: 0 }));
         setEnableSlider(false);
-        console.log(dashboardData);
+        setSliderSpeed(0);
      }
     else {
-      console.log("NOT charging...");
       setDashboardData((prevState) => ({ ...prevState, powerConsumption: 0 }));
+      setEnableSlider(true);
       
     }
     } catch (error) {
@@ -81,7 +80,7 @@ const App = () => {
         motorRPM={dashboardData.motorRPM}
         gearRatio={dashboardData.gearRatio}
         initialSpeed={sliderSpeed}
-        enableSlider={true}
+        enableSlider={enableSlider}
         onSpeedChange={handleSpeedChange}
       />
       <Footer
