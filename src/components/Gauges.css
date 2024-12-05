@@ -2,7 +2,7 @@
 .gauges {
     display: flex;
     justify-content: space-around;
-    margin: 20px;
+
   }
   
   .gauge-container {
@@ -10,5 +10,6 @@
   }
   
   h3 {
+    color:#e5e5e5;
     margin-bottom: 10px;
   }

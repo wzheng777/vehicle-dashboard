@@ -5,22 +5,20 @@
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    color: #fff;
-    background-color: #444;
+    color: #5e5e5e;
+    background-color: #1a1a1a;
     padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #555;
   }
   
   .info-item {
     text-align: center;
     font-family: Arial, sans-serif;
-    color: #fff;
+    color: #e5e5e5;
   }
   
   p {
     margin-top: 10px;
     font-size: 14px;
-    color: #fff;
+    color: #e5e5e5;
     font-weight: bold;
   }

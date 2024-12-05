@@ -1,14 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './BottomButtons.css';
 
-import MenuButton from './MenuButton';
-import ChargingButton from './ChargingButton';
-import './Footer.css';
-import BatteryChargingFullIcon from '@mui/icons-material/BatteryChargingFull';
-import ThermostatIcon from '@mui/icons-material/Thermostat';
-
-import SpeedIcon from '@mui/icons-material/Speed';
-import BatteryAlertIcon from '@mui/icons-material/BatteryAlert';
 
 
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -16,17 +9,13 @@ import SettingsIcon from '@mui/icons-material/Settings';
 const BottomButtons = ({ onGearClick, onMotorClick, onBatteryTempClick }) => {
   return (
     <div className="bottom-buttons">
-      <div className="button" onClick={onGearClick}>
-        <SettingsIcon style={{ fontSize: 40 }} />
-        <p>Gear Info</p>
+      <div className="button" id="gear-info" onClick={onGearClick}>
       </div>
-      <div className="button" onClick={onMotorClick}>
-        <SpeedIcon style={{ fontSize: 40 }} />
-        <p>Motor Info</p>
+      <div className="button" id="engine-info" onClick={onMotorClick}>
+        
       </div>
-      <div className="button" onClick={onBatteryTempClick}>
-        <BatteryAlertIcon style={{ fontSize: 40 }} />
-        <p>Battery Temp</p>
+      <div className="button" id="battery-info" onClick={onBatteryTempClick}>
+       
       </div>
     </div>
   );

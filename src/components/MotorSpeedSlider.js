@@ -14,7 +14,7 @@ const MotorSpeedSlider = ({ initialSpeed, onSpeedChange, enableSlider }) => {
   // console.log(speed);
   return (
     <div className="motor-speed-slider">
-      <h3>Motor Speed Setting</h3>
+      <h3>MOTOR SPEED SETTING</h3>
       <Slider
         disabled={!enableSlider}
         value={speed}
@@ -24,8 +24,10 @@ const MotorSpeedSlider = ({ initialSpeed, onSpeedChange, enableSlider }) => {
         min={0}
         max={4}
         valueLabelDisplay="auto"
+        color="#333333"
+        ColorSlider="#1a1a1a"
       />
-      <p>Current Motor Speed: {speed}</p>
+      <p>Speed: {speed}</p>
     </div>
   );
 };
