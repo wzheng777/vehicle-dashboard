@@ -3,6 +3,7 @@ import Indicators from './components/Indicators';
 import MidRow from './components/MidRow';
 import Footer from './components/Footer';
 import Gauges from './components/Gauges';
+
 import SliderWithExternalControl from './components/SliderWithExternalControl';
 
 import axios from 'axios';
@@ -40,7 +41,6 @@ const App = () => {
   }, []);
 
   const handleSpeedChange = async (speed) => {
-    console.log(speed);
     try {
       await axios.post(BASE_URL + '/api/dashboard/motor-speed', { speed });
       setDashboardData((prevState) => ({ ...prevState, motorSpeed: speed }));
@@ -56,9 +56,8 @@ const App = () => {
       setDashboardData((prevState) => ({ ...prevState, isCharging: !prevState.isCharging }));
 
      if ( dashboardData.isCharging) {
-        console.log("charging...");
         setDashboardData((prevState) => ({ ...prevState, motorSpeed: 0 }));
-        setSliderSpeed(0);
+        setEnableSlider(false);
         console.log(dashboardData);
      }
     else {
