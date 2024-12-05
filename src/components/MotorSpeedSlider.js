@@ -40,7 +40,7 @@ const MotorSpeedSlider = ({ initialSpeed, onSpeedChange, enableSlider }) => {
       <h3>MOTOR SPEED SETTING</h3>
       <Slider
         disabled={!enableSlider}
-        value={speed}
+        value={initialSpeed}
         onChange={handleSpeedChange}
         step={1}
         marks={marks.map((mark) => ({ ...mark, label: <span style={{ color: '#e5e5e5' }}>{mark.label}</span> }))}

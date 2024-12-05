@@ -3,6 +3,8 @@ import Indicators from './components/Indicators';
 import MidRow from './components/MidRow';
 import Footer from './components/Footer';
 import Gauges from './components/Gauges';
+import SliderWithExternalControl from './components/SliderWithExternalControl';
+
 import axios from 'axios';
 import './App.css';
 
@@ -20,7 +22,6 @@ const App = () => {
     isCharging: false,
   });
 
-  const [enableSlider, setEnableSlider] = useState(true);
   const [sliderSpeed, setSliderSpeed] = useState(0);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const App = () => {
     try {
       await axios.post(BASE_URL + '/api/dashboard/motor-speed', { speed });
       setDashboardData((prevState) => ({ ...prevState, motorSpeed: speed }));
+      setSliderSpeed(speed);
     } catch (error) {
       console.error('Error updating motor speed:', error);
     }
@@ -56,12 +58,12 @@ const App = () => {
      if ( dashboardData.isCharging) {
         console.log("charging...");
         setDashboardData((prevState) => ({ ...prevState, motorSpeed: 0 }));
-        setEnableSlider(false);
+        setSliderSpeed(0);
         console.log(dashboardData);
      }
     else {
+      console.log("NOT charging...");
       setDashboardData((prevState) => ({ ...prevState, powerConsumption: 0 }));
-      setEnableSlider(true);
       
     }
     } catch (error) {
@@ -80,7 +82,7 @@ const App = () => {
         motorRPM={dashboardData.motorRPM}
         gearRatio={dashboardData.gearRatio}
         initialSpeed={sliderSpeed}
-        enableSlider={enableSlider}
+        enableSlider={true}
         onSpeedChange={handleSpeedChange}
       />
       <Footer
@@ -89,7 +91,7 @@ const App = () => {
         onBatteryTempClick={() => console.log('Battery temp info clicked')}
         onMenuClick={() => console.log('Menu clicked')}
         onChargingToggle={handleChargingToggle}
-        initialChargingState={dashboardData.isCharging}
+        initialChargingState={false}
       />
     </div>
   );
