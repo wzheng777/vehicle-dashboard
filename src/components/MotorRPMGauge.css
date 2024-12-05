@@ -17,7 +17,6 @@
 .gauge-background-rpm {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   border: 0px solid #ccc;
   display: flex;
   justify-content: center;

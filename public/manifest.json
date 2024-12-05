@@ -21,6 +21,16 @@
       "src": "rpm.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "plug-on.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "plug-off.png",
+      "type": "image/png",
+      "sizes": "192x192"
     }
   ],
   "start_url": ".",

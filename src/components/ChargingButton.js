@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import BatteryChargingFullIcon from '@mui/icons-material/BatteryChargingFull';
-import PowerOffIcon from '@mui/icons-material/PowerOff';
 import './ChargingButton.css';
 
 const ChargingButton = ({ initialChargingState, onChargingToggle }) => {
@@ -16,11 +14,10 @@ const ChargingButton = ({ initialChargingState, onChargingToggle }) => {
   return (
     <div className="charging-button" onClick={handleChargingClick}>
       {isCharging ? (
-        <BatteryChargingFullIcon style={{ fontSize: 40, color: 'green' }} />
+        <img src="plug-on.png" alt="Charging On" style={{ width: 140, height: 140 }} />
       ) : (
-        <PowerOffIcon style={{ fontSize: 40, color: 'red' }} />
+        <img src="plug-off.png" alt="Charging Off" style={{ width: 140, height: 140 }} />
       )}
-      <p>{isCharging ? 'Stop Charging' : 'Start Charging'}</p>
     </div>
   );
 };
@@ -31,5 +28,3 @@ ChargingButton.propTypes = {
 };
 
 export default ChargingButton;
-
-
