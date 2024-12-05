@@ -6,6 +6,29 @@ import './MotorSpeedSlider.css';
 const MotorSpeedSlider = ({ initialSpeed, onSpeedChange, enableSlider }) => {
   const [speed, setSpeed] = useState(initialSpeed || 0);
 
+  const marks = [
+    {
+      value: 0,
+      label: 'OFF',
+    },
+    {
+      value: 1,
+      label: '1',
+    },
+    {
+      value: 2,
+      label: '2',
+    },
+    {
+      value: 3,
+      label: '3',
+    },
+    {
+      value: 4,
+      label: '4',
+    },
+  ];
+  
   const handleSpeedChange = (event, newValue) => {
     setSpeed(newValue);
     onSpeedChange(newValue);
@@ -20,14 +43,13 @@ const MotorSpeedSlider = ({ initialSpeed, onSpeedChange, enableSlider }) => {
         value={speed}
         onChange={handleSpeedChange}
         step={1}
-        marks
+        marks={marks.map((mark) => ({ ...mark, label: <span style={{ color: '#e5e5e5' }}>{mark.label}</span> }))}
         min={0}
         max={4}
         valueLabelDisplay="auto"
         color="#333333"
         ColorSlider="#1a1a1a"
       />
-      <p>Speed: {speed}</p>
     </div>
   );
 };
