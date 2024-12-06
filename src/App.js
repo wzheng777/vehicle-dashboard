@@ -7,7 +7,8 @@ import Gauges from './components/Gauges';
 import axios from 'axios';
 import './App.css';
 
-const BASE_URL = " https://backend-service-847633672572.us-central1.run.app";
+const BASE_URL = "https://backend-service-847633672572.us-central1.run.app";
+//const BASE_URL = "http://localhost:8080"
 
 const App = () => {
 
@@ -29,6 +30,7 @@ const App = () => {
       try {
         const response = await axios.get( BASE_URL + '/api/dashboard');
         setDashboardData(response.data);
+        
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
       }
@@ -51,22 +53,34 @@ const App = () => {
 
   const handleChargingToggle = async () => {
     try {
-      await axios.post(BASE_URL + '/api/dashboard/charging', { charging: !dashboardData.isCharging });
-      setDashboardData((prevState) => ({ ...prevState, isCharging: !prevState.isCharging }));
-
-     if ( dashboardData.isCharging) {
-        setDashboardData((prevState) => ({ ...prevState, motorSpeed: 0 }));
+      console.log("Current state before toggle:", dashboardData.isCharging);
+  
+      // Toggle the charging state
+      const newChargingState = !dashboardData.isCharging;
+  
+      // Send the updated charging state to the backend
+      const response = await axios.post(BASE_URL + '/api/dashboard/charging', { charging: newChargingState });
+  
+      // Update the React state based on the backend's response
+      setDashboardData((prevState) => ({
+        ...prevState,
+        ...response.data, // Assume the backend sends back the updated dashboard data
+      }));
+  
+      // Update slider state based on the new charging state
+      if (newChargingState) {
         setEnableSlider(false);
-        setSliderSpeed(0);
-     }
-    else {
-      setDashboardData((prevState) => ({ ...prevState, powerConsumption: 0 }));
-      setEnableSlider(true);
-    }
+        setSliderSpeed(0); // Reset slider when charging
+      } else {
+        setEnableSlider(true);
+      }
+  
+      console.log("Updated state after toggle:", newChargingState);
     } catch (error) {
       console.error('Error updating charging state:', error);
     }
   };
+  
 
   
   return (
