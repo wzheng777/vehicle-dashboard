@@ -7,10 +7,9 @@ import Gauges from './components/Gauges';
 import axios from 'axios';
 import './App.css';
 
-const BASE_URL = "http://localhost:5001";
+const BASE_URL = " https://backend-service-847633672572.us-central1.run.app";
 
 const App = () => {
-
 
   const [dashboardData, setDashboardData] = useState({
     indicators: {},
@@ -18,6 +17,7 @@ const App = () => {
     batteryPercentage: 100,
     powerConsumption: 0,
     motorRPM: 0,
+    gearRatio: "3/4",
     isCharging: false,
   });
 
@@ -62,13 +62,13 @@ const App = () => {
     else {
       setDashboardData((prevState) => ({ ...prevState, powerConsumption: 0 }));
       setEnableSlider(true);
-      
     }
     } catch (error) {
       console.error('Error updating charging state:', error);
     }
   };
 
+  
   return (
     <div className="app">
     
