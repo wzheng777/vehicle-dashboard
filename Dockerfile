@@ -1,5 +1,5 @@
 # Use an official Node.js runtime as a base image
-FROM node
+FROM node:14 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -16,14 +16,23 @@ COPY . .
 # Build the React application
 RUN npm run build
 
-# Use a lightweight web server for serving the static files
-FROM nginx:alpine
 
-# Copy the build files to the Nginx directory
-COPY --from=build /app/build /usr/share/nginx/html
+RUN npm install -g serve
+
 
 # Expose port 8080
 EXPOSE 8080
 
-# Start Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve", "-s", "build", "-l", "8080"]
+
+# Use a lightweight web server for serving the static files
+# FROM nginx:alpine
+
+# # Copy the build files to the Nginx directory
+# COPY --from=build /app/build /usr/share/nginx/html
+
+# # Expose port 8080
+# EXPOSE 8080
+
+# # Start Nginx
+# CMD ["nginx", "-g", "daemon off;"]
