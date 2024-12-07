@@ -7,7 +7,7 @@ import Gauges from './components/Gauges';
 import axios from 'axios';
 import './App.css';
 
-const BASE_URL = "https://backend-service-847633672572.us-central1.run.app";
+const BASE_URL = " https://backend-service-847633672572.us-central1.run.app";
 //const BASE_URL = "http://localhost:8080"
 
 const App = () => {
@@ -103,7 +103,7 @@ const App = () => {
         onBatteryTempClick={() => console.log('Battery temp info clicked')}
         onMenuClick={() => console.log('Menu clicked')}
         onChargingToggle={handleChargingToggle}
-        initialChargingState={false}
+        initialChargingState={dashboardData.isCharging}
       />
     </div>
   );

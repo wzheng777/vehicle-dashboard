@@ -14,9 +14,9 @@ const ChargingButton = ({ initialChargingState, onChargingToggle }) => {
   return (
     <div className="charging-button" onClick={handleChargingClick}>
       {isCharging ? (
-        <img src="plug-on.png" alt="Charging On" style={{ width: 140, height: 140 }} />
-      ) : (
         <img src="plug-off.png" alt="Charging Off" style={{ width: 140, height: 140 }} />
+      ) : (
+        <img src="plug-on.png" alt="Charging On" style={{ width: 140, height: 140 }} />
       )}
     </div>
   );
